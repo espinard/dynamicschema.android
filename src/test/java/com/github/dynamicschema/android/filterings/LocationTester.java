@@ -31,8 +31,8 @@ public class LocationTester {
 			"8","8","1050","8","50.835324","4.366695","Belgique"
 			"9","9","1030","9","50.854834","4.370743","Belgique"
 			"10","10","1030","10","50.854834","4.370743","Belgique"
-			"11","11","75000","11","45.76896","4.366695","France"
-			"12","12","75000","12","45.75896","4.366695","France"
+			"11","11","75000","11","48.80896","2.366695","France"
+			"12","12","75000","12","48.80896","2.366695","France"
 			"13","13","69000","13","45.73896","4.370743","France"
 			"14","14","69000","14","45.72896","4.370743","France"
 			"15","15","100","15","41.73896","12.370743","Italie"
@@ -43,16 +43,16 @@ public class LocationTester {
 		double latB, longitB;
 		
 		//A
-		latA = 50.843454;
-		longitA = 4.347188;
+		latA = 48.862682;
+		longitA = 2.351017;
 		
 		//B
-		latB = 50.874011;
-		longitB = 4.37854;
+		latB = 48.84896;
+		longitB = 2.366695;
 		
 		double distance = Math.abs(latA - latB) + Math.abs(longitA - longitB);
 		System.out.println(distance);
-		System.out.println(""+ distance +  " <= " + "0.053724 : " + (distance < 0.053724 ));
+		System.out.println(""+ distance +  " <= " + "0.053724 : " + (distance <= 0.053724 ));
 	}
 
 }

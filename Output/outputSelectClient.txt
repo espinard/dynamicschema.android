@@ -1,0 +1,18 @@
+SELECT Client1._id AS "Client1._id", 
+Client1.Cli_Name AS "Client1.Cli_Name", 
+Client1.Cli_Surname AS "Client1.Cli_Surname", 
+Client1.Loc_latitude AS "Client1.Loc_latitude", 
+Client1.Loc_longitude AS "Client1.Loc_longitude", 
+Client1.Age AS "Client1.Age", 
+Client1.Country AS "Client1.Country", 
+Client1.id_language AS "Client1.id_language", 
+Language1._id AS "Language1._id", 
+Language1.Description AS "Language1.Description"
+FROM Client AS Client1
+LEFT JOIN Language AS Language1 ON Language1._id = Client1.id_language
+
+GROUP BY Client1._id
+ORDER BY Client1._id
+
+
+Dependencies for Client1 Language1

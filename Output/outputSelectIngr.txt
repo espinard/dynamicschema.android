@@ -1,0 +1,11 @@
+SELECT Ingredient1._id AS "Ingredient1._id", 
+Ingredient1.Unit AS "Ingredient1.Unit", 
+Ingredient1.Origin AS "Ingredient1.Origin", 
+Ingredient1.Expiration_date AS "Ingredient1.Expiration_date"
+FROM Ingredient AS Ingredient1
+
+
+GROUP BY Ingredient1._id
+ORDER BY Ingredient1._id
+
+

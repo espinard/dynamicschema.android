@@ -1,0 +1,37 @@
+SELECT Meal1._id AS "Meal1._id", 
+Meal1.Bud_min AS "Meal1.Bud_min", 
+Meal1.Bud_max AS "Meal1.Bud_max", 
+Meal1.Preparation_time AS "Meal1.Preparation_time", 
+Meal1.id_restaurant AS "Meal1.id_restaurant", 
+Restaurant1._id AS "Restaurant1._id", 
+Restaurant1.Food_Type AS "Restaurant1.Food_Type", 
+Restaurant1.Age_min AS "Restaurant1.Age_min", 
+Restaurant1.id_region AS "Restaurant1.id_region", 
+Address1._id AS "Address1._id", 
+Address1.id_restaurant AS "Address1.id_restaurant", 
+Address1.Postal_Code AS "Address1.Postal_Code", 
+Address1.Street_Number AS "Address1.Street_Number", 
+Address1.Latitude AS "Address1.Latitude", 
+Address1.Longitude AS "Address1.Longitude", 
+Address1.Country AS "Address1.Country", 
+Chef1._id AS "Chef1._id", 
+Chef1.id_restaurant AS "Chef1.id_restaurant", 
+Chef1.LastName AS "Chef1.LastName", 
+Chef1.FirstName AS "Chef1.FirstName", 
+Region1._id AS "Region1._id", 
+Region1.Description AS "Region1.Description", 
+Region1.Parent AS "Region1.Parent"
+FROM Meal AS Meal1
+LEFT JOIN Restaurant AS Restaurant1 ON Restaurant1._id = Meal1.id_restaurant
+LEFT JOIN Region AS Region1 ON Region1._id = Restaurant1.id_region
+LEFT JOIN Chef AS Chef1 ON Restaurant1._id = Chef1.id_restaurant
+LEFT JOIN Address AS Address1 ON Restaurant1._id = Address1.id_restaurant
+
+GROUP BY Meal1._id
+ORDER BY Meal1._id
+
+
+Dependencies for Restaurant1 Region1
+Dependencies for Restaurant1 Chef1
+Dependencies for Restaurant1 Address1
+Dependencies for Meal1 Restaurant1

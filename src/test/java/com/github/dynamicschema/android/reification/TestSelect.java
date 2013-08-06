@@ -27,7 +27,7 @@ import com.github.dynamicschema.android.reification.gen.RestaurantTable;
 
 public class TestSelect extends TestCase {
 
-	private final String DB_PATH_BIG_RECURSIVE = "jdbc:sqlite:D:\\Documents\\Dropbox\\UCL\\Master22\\Thesis\\GourmetTestFiles\\gourmetNew.sqlite";
+	private final String SQLITE_DB_PATH = "jdbc:sqlite:D:\\Documents\\Dropbox\\UCL\\Master22\\Thesis\\GourmetTestFiles\\gourmetNew.sqlite";
 
 
 	private Connection connection = null;  
@@ -40,7 +40,7 @@ public class TestSelect extends TestCase {
 
 		try {
 			Class.forName("org.sqlite.JDBC");  
-			connection = DriverManager.getConnection(DB_PATH_BIG_RECURSIVE);
+			connection = DriverManager.getConnection(SQLITE_DB_PATH);
 
 
 		} catch (Exception e1) {

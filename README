@@ -1,0 +1,43 @@
+**************************************
+
+The project dynamicschema.android actually contains the code of the automated schema reifier
+
+**************************************
+
+************
+NOTICE
+************
+
+Development Environment used:
+	- Windows 7 64-bit .
+	- JDK version: 7 update 25 (64-bit)
+	- Eclipse Juno (64-bit)
+	- DB-Main 9.1.5 : http://www.db-main.eu/
+************
+**
+--- INSTRUCTIONS FOR LAUNCHING THE SCHEMA REIFIER
+--- The figures referenced in the instructions are located in the README_FIGURES folder. 
+
+1) In DB-Main installation files, under the 'bin' folder, there are two libraries: 
+	- jidbm.jar
+	- jidbmx.jar
+2) Reference the libraries showed above into the dynamicschema.android project as illustrated on figure in file named 'build_path.png'
+3) In the project properties, under the Java Build Path window, expand the 'jidbm.jar' entry to specify the native library 
+	which is used by 'jidbm.jar', as illustrated on figure 'nativeReference.PNG'
+	The native library is called 'jidbm.dll' and is also located under the 'bin' folder of DB-Main.
+4) Make sure the schema reifier references the dynamicSchema project as illustrated in figure 'ProjectReference.PNG'
+5) Add the full path of the DB-Main 'bin'and the '/java/jre/bin' and (e.g. "C:\Program Files (x86)\DB-Main 9.1.5 (DEASY)\bin") 
+	in the following environment variables: 
+	
+	- System CLASSPATH
+	- User PATH
+
+6) The executable Java file of the Schema Reifier (DBModelGeneratorFull.java) is located in src/test/java in the 'reification' package
+7) If you get the error as illustrated on figure '32bitLoadError', You have to change the project properties to use the JDK provided with DB-Main.  
+	It is located under the 'java/jre' folder.
+	To do this: 
+		- Double-click on the 'JRE System Library' referenced in your project. 
+		- Click on 'properties'
+		- Once you get the screen as illustrated in figure 'JRE', click on 'Installed JREs'
+		- Once you get the screen as illustrated in figure 'AddJRE.png', click on 'Add' and find the folder where the JRE provided by DB-Main.
+

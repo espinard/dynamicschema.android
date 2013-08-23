@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 public class TextFieldPanel extends JPanel {
 	
 
-	private static final int FIELD_SIZE = 20;
+	private static final int FIELD_SIZE = 25;
 	private String textFieldLabelName;
 	private JTextField textField;
 	/**

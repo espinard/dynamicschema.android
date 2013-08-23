@@ -21,7 +21,7 @@ public class DBModelGeneratorFull {
 			UIManager.setLookAndFeel(WINDOWS_LOOK);
 		} catch (Exception evt) {}
 		
-		MainGui gui = new MainGui("Generation settings");
+		MainGui gui = new MainGui("Schema Reifier");
 		
 		Thread t1 = new Thread(gui);
 		t1.start();

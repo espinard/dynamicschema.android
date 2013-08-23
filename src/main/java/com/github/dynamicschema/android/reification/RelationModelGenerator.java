@@ -92,6 +92,9 @@ public class RelationModelGenerator extends AbstractDBModelGenerator {
 		System.out.println("Generation done : " + fName	);
 
 	}
+	/*
+	 * build code for the current relation model
+	 */
 	private void genCodeOfRelations(RelationModel schemaRelModel, MyFileWriter mf){
 
 		StringBuilder genSb =  new StringBuilder();

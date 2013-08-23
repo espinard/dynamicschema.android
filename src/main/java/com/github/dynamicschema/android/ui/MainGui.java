@@ -1,5 +1,6 @@
 package com.github.dynamicschema.android.ui;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -7,10 +8,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class MainGui extends JFrame implements Runnable {
 	
-	private static final boolean IN_TEST = true;
+	private static final boolean IN_TEST = true; //TODO, set to false for normal usage
 	
 	/**
 	 * 
@@ -25,6 +28,15 @@ public class MainGui extends JFrame implements Runnable {
 	private String packName;
 	private String sourceFile; 
 	private String genPath;
+	
+	private JPanel leftPanel;
+	private JPanel rightPanel;
+	private JPanel fillP1; 
+	private JPanel btPanel;
+	private JPanel fillP3; 
+	private JPanel fillButt; 
+
+
 	
 	private int globalStatus = STATUS_OK;
 	
@@ -41,6 +53,19 @@ public class MainGui extends JFrame implements Runnable {
 	public MainGui(String name) throws HeadlessException {
 		super(name);
 		this.globalStatus = STATUS_WAIT;
+		this.leftPanel = new JPanel(new GridLayout(4,1));
+		this.rightPanel = new JPanel(new GridLayout(4,1));
+		this.fillP1 =  new JPanel();
+		this.btPanel =  new JPanel();
+		this.fillP3 =  new JPanel();
+		this.fillButt =  new JPanel();
+
+		this.add(leftPanel, BorderLayout.WEST);
+		this.add(rightPanel,BorderLayout.EAST);
+		this.add(fillButt, BorderLayout.SOUTH);
+		this.fillButt.add(fillP1, BorderLayout.WEST);
+		this.fillButt.add(btPanel, BorderLayout.CENTER);
+		this.fillButt.add(fillP3, BorderLayout.EAST);
 	}
 	
 	
@@ -48,7 +73,6 @@ public class MainGui extends JFrame implements Runnable {
 	private void basicSettings() {
 		
 		//Set Layout
-		this.setLayout(new GridLayout(5, 1));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setSize(1200, 800);
@@ -56,26 +80,31 @@ public class MainGui extends JFrame implements Runnable {
 	}
 
 	private void setUpConfirmationArea() {
-		JButton startButt = new JButton("Start Generation");
+		JButton startButt = new JButton("Start Reification");
+//		startButt.setSize(20,100);
 		startButt.addActionListener(new MainButtonHandler()); 
-		this.getContentPane().add(startButt);
+		this.btPanel.add(startButt);
 	}
 
 	private void setUpPackNameArea() {
-		this.jpPackageName = new TextFieldPanel("Package Name");
-		this.getContentPane().add(jpPackageName);
+		JLabel labPack = new JLabel("Default Package declaration");
+		this.leftPanel.add(labPack);
+		this.jpPackageName = new TextFieldPanel("");
+		this.rightPanel.add(jpPackageName);
 		
-		//TODO remove 
+		
 		if(IN_TEST)
-			this.jpPackageName.getTextField().setText("be.dbmodelgen.reification.gen");
+			this.jpPackageName.getTextField().setText("com.gourmet.database.gen");
 	}
 
 
 	private void setUpAppNameArea() {
-		this.jpAppName = new TextFieldPanel("Application Name");
-		this.getContentPane().add(jpAppName);
+		JLabel appName = new JLabel("Target Application Name");
+		this.leftPanel.add(appName);
+		this.jpAppName = new TextFieldPanel("");
+		this.rightPanel.add(jpAppName);
 		
-		//TODO remove 
+
 		if(IN_TEST)
 			this.jpAppName.getTextField().setText("Gourmet");
 	}
@@ -83,21 +112,24 @@ public class MainGui extends JFrame implements Runnable {
 
 
 	private void setUpGenPathArea() {
-		this.jpGenPath = new FileChoosingPanel("Gen Path",this, false);
-		this.getContentPane().add(jpGenPath);
-		//TODO remove 
+		JLabel genPath = new JLabel("Generated Files Folder");
+		this.leftPanel.add(genPath);
+		this.jpGenPath = new FileChoosingPanel("",this, false);
+		this.rightPanel.add(jpGenPath);
+
 		if(IN_TEST){
-			String path ="C:\\Users\\esp\\workspace\\dbModelGen\\src\\main\\java\\be\\dbmodelgen\\reification\\gen";
+			String path ="C:\\Users\\esp\\git\\gourmet\\src\\com\\gourmet\\database\\gen";
 			this.jpGenPath.getTextField().setText(path);
 		}
 	}
 
 
 	private void setUpSourceArea() {
+		JLabel srcFile = new JLabel("DBMain project file");
+		leftPanel.add(srcFile);
+		this.jpSource = new FileChoosingPanel("", this, true);
+		this.rightPanel.add(jpSource);
 
-		this.jpSource = new FileChoosingPanel("Source file", this, true);
-		this.getContentPane().add(jpSource);
-		//TODO remove 
 		if(IN_TEST){
 			String path ="D:\\Documents\\Dropbox\\UCL\\Master22\\Thesis\\DBMain\\projects\\Gourmet.lun";
 			this.jpSource.getTextField().setText(path);
@@ -192,14 +224,12 @@ public class MainGui extends JFrame implements Runnable {
 
 
 	public void run() {
-		// TODO Auto-generated method stub
-		setUpSourceArea();
-		setUpGenPathArea();
 		setUpAppNameArea();
 		setUpPackNameArea();
+		setUpSourceArea();
+		setUpGenPathArea();
 		setUpConfirmationArea();
 		basicSettings();
-
 		display();
 	}	
 

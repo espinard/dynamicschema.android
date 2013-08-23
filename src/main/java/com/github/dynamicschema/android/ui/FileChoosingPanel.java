@@ -19,8 +19,12 @@ import javax.swing.JTextField;
  *
  */
 public class FileChoosingPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String NONE = "N/A";
-	private static final int FIELD_SIZE = 20;
+	private static final int FIELD_SIZE = 25;
 
 	
 	private String textFieldLabelName;
@@ -58,7 +62,7 @@ public class FileChoosingPanel extends JPanel {
 		this.textField = new JTextField();
 		textField.setEditable(false);
 		textField.setColumns(FIELD_SIZE);
-		JButton chooseButton= new JButton("Choose...");
+		JButton chooseButton= new JButton("Browse...");
 		chooseButton.addActionListener(new ButtonHandler());
 		
 		//Customize content panel and Fill the panel with created elements 

@@ -26,7 +26,8 @@ Development Environment used:
 	which is used by 'jidbm.jar', as illustrated on figure 'nativeReference.PNG'
 	The native library is called 'jidbm.dll' and is also located under the 'bin' folder of DB-Main.
 4) Make sure the schema reifier references the dynamicSchema project as illustrated in figure 'ProjectReference.PNG'
-5) Add the full path of the DB-Main 'bin'and the '/java/jre/bin' and (e.g. "C:\Program Files (x86)\DB-Main 9.1.5 (DEASY)\bin") 
+5) Add the full path of the DB-Main 'bin' (e.g. "C:\Program Files (x86)\DB-Main 9.1.5 (DEASY)\bin") 
+	and the '/java/jre/bin'(e.g. C:\Program Files (x86)\DB-Main 9.1.5 (DEASY)\java\jre\bin)
 	in the following environment variables: 
 	
 	- System CLASSPATH

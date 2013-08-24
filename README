@@ -26,12 +26,19 @@ Development Environment used:
 	which is used by 'jidbm.jar', as illustrated on figure 'nativeReference.PNG'
 	The native library is called 'jidbm.dll' and is also located under the 'bin' folder of DB-Main.
 4) Make sure the schema reifier references the dynamicSchema project as illustrated in figure 'ProjectReference.PNG'
-5) Add the full path of the DB-Main 'bin' (e.g. "C:\Program Files (x86)\DB-Main 9.1.5 (DEASY)\bin") 
-	and the '/java/jre/bin'(e.g. C:\Program Files (x86)\DB-Main 9.1.5 (DEASY)\java\jre\bin)
-	in the following environment variables: 
+5) Set the environment variables similary to this:
+
+	system CLASSPATH
+	"C:\Program Files (x86)\DB-Main-9.1.5\bin\jidbm.jar";"C:\Program Files (x86)\DB-Main-9.1.5\bin\jidbmx.jar"
 	
-	- System CLASSPATH
-	- User PATH
+	
+	User Path
+	"C:\Program Files (x86)\DB-Main 9.1.5\bin\jidbm.dll";"C:\Program Files (x86)\DB-Main 9.1.5\bin\";"C:\Program Files (x86)\DB-Main 9.1.2\java\jre\bin"
+	
+	User CLASSPATH
+	"C:\Program Files (x86)\DB-Main-9.1.5\bin\jidbm.jar";
+
+
 
 6) The executable Java file of the Schema Reifier (DBModelGeneratorFull.java) is located in src/test/java in the 'reification' package
 7) If you get the error as illustrated on figure '32bitLoadError', You have to change the project properties to use the JDK provided with DB-Main.  
